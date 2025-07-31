@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv7mv73nltqo0"]
+[gd_scene load_steps=4 format=3 uid="uid://bv7mv73nltqo0"]
 
 [ext_resource type="Script" uid="uid://s70fratwfkl2" path="res://game/entities/player/player.gd" id="1_1a4jd"]
 [ext_resource type="Texture2D" uid="uid://4dbqvp107uf4" path="res://game/entities/player/skull-1.png" id="2_gqtae"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqtae"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 18
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_1a4jd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.14, 0.14)
+scale = Vector2(0.035, 0.035)
 texture = ExtResource("2_gqtae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gqtae")
