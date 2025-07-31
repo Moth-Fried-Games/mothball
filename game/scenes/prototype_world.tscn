@@ -26,6 +26,7 @@ y_sort_enabled = true
 script = ExtResource("1_d43yr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
 process_callback = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
