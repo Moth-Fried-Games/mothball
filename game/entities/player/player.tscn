@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqtae"]
 radius = 12.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player1" type="CharacterBody2D"]
 collision_mask = 18
 motion_mode = 1
 wall_min_slide_angle = 0.0

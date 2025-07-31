@@ -1,23 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://31brr7dgsiec"]
+[gd_scene load_steps=10 format=3 uid="uid://31brr7dgsiec"]
 
 [ext_resource type="Script" uid="uid://brln6s8r78wxy" path="res://game/scenes/prototype_world.gd" id="1_d43yr"]
+[ext_resource type="PackedScene" uid="uid://bv7mv73nltqo0" path="res://game/entities/player/player.tscn" id="2_jy3tp"]
+[ext_resource type="PackedScene" uid="uid://bkrm6wtepammu" path="res://game/entities/bullets/bullet.tscn" id="3_870h7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d43yr"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jy3tp"]
 normal = Vector2(0, 1)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jy3tp"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_870h7"]
-normal = Vector2(-1, 0)
+normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_in110"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d8u2r"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5bdd"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d8u2r"]
 normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5bdd"]
+normal = Vector2(-1, 0)
 
 [node name="PrototypeWorld" type="Node2D"]
 y_sort_enabled = true
@@ -39,6 +41,7 @@ color = Color(0, 0, 0, 1)
 [node name="StageStaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(160, 5)
 collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageStaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_d43yr")
@@ -46,6 +49,7 @@ shape = SubResource("WorldBoundaryShape2D_d43yr")
 [node name="StageStaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(160, 175)
 collision_layer = 2
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageStaticBody2D2"]
 shape = SubResource("WorldBoundaryShape2D_jy3tp")
@@ -53,14 +57,15 @@ shape = SubResource("WorldBoundaryShape2D_jy3tp")
 [node name="Player1StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(10, 90)
 collision_layer = 16
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_870h7")
 
 [node name="Player1StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(150, 90)
-collision_layer = 0
-collision_mask = 17
+collision_layer = 16
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1StaticBody2D2"]
 shape = SubResource("WorldBoundaryShape2D_in110")
@@ -68,6 +73,7 @@ shape = SubResource("WorldBoundaryShape2D_in110")
 [node name="Player2StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(170, 90)
 collision_layer = 32
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_d8u2r")
@@ -75,6 +81,46 @@ shape = SubResource("WorldBoundaryShape2D_d8u2r")
 [node name="Player2StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(310, 90)
 collision_layer = 32
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2StaticBody2D2"]
 shape = SubResource("WorldBoundaryShape2D_j5bdd")
+
+[node name="Player1" parent="." node_paths=PackedStringArray("bullets") instance=ExtResource("2_jy3tp")]
+position = Vector2(67, 83)
+bullets = [NodePath("../Bullet1"), NodePath("../Bullet2"), NodePath("../Bullet3"), NodePath("../Bullet4"), NodePath("../Bullet5")]
+
+[node name="Player2" parent="." node_paths=PackedStringArray("bullets") instance=ExtResource("2_jy3tp")]
+position = Vector2(228, 88)
+bullets = [NodePath("../Bullet6"), NodePath("../Bullet7"), NodePath("../Bullet8"), NodePath("../Bullet9"), NodePath("../Bullet10")]
+player = "P2"
+
+[node name="Bullet1" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet2" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet3" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet4" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet5" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet6" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet7" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet8" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet9" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
+
+[node name="Bullet10" parent="." instance=ExtResource("3_870h7")]
+position = Vector2(54, 201)
