@@ -1,20 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://31brr7dgsiec"]
+[gd_scene load_steps=8 format=3 uid="uid://31brr7dgsiec"]
 
 [ext_resource type="Script" uid="uid://brln6s8r78wxy" path="res://game/scenes/prototype_world.gd" id="1_d43yr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d43yr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jy3tp"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_870h7"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_in110"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d8u2r"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5bdd"]
+normal = Vector2(1, 0)
 
 [node name="PrototypeWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_d43yr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
 offset_bottom = 180.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 5.0
 offset_top = 5.0
-offset_right = 315.0
+offset_right = 320.0
 offset_bottom = 175.0
 color = Color(0, 0, 0, 1)
+
+[node name="StageStaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(160, 5)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageStaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_d43yr")
+
+[node name="StageStaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(160, 175)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageStaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_jy3tp")
+
+[node name="Player1StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(10, 90)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_870h7")
+
+[node name="Player1StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(150, 90)
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_in110")
+
+[node name="Player2StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(170, 90)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_d8u2r")
+
+[node name="Player2StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(310, 90)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_j5bdd")
