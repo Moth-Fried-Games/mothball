@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=4 uid="uid://b63rylnp372g7"]
 
-[ext_resource type="Script" path="res://game/scenes/menu.gd" id="1_p4cgt"]
+[ext_resource type="Script" uid="uid://bl2c2irnhyaw6" path="res://game/scenes/menu.gd" id="1_p4cgt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
