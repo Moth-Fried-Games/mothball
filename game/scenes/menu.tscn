@@ -1,6 +1,7 @@
-[gd_scene load_steps=56 format=4 uid="uid://b63rylnp372g7"]
+[gd_scene load_steps=57 format=4 uid="uid://b63rylnp372g7"]
 
 [ext_resource type="Script" uid="uid://bl2c2irnhyaw6" path="res://game/scenes/menu.gd" id="1_p4cgt"]
+[ext_resource type="Theme" uid="uid://y67sepj4ae5d" path="res://game/scenes/optionbuttons.tres" id="2_ugwst"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
@@ -236,10 +237,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -491,7 +493,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_oaryu")
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -682,6 +683,7 @@ theme_override_constants/separation = 5
 
 [node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("2_ugwst")
 theme_override_font_sizes/font_size = 10
 selected = 0
 item_count = 2
@@ -692,6 +694,7 @@ popup/item_1/id = 1
 
 [node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("2_ugwst")
 theme_override_font_sizes/font_size = 10
 selected = 0
 item_count = 4
@@ -706,6 +709,7 @@ popup/item_3/id = 3
 
 [node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("2_ugwst")
 theme_override_font_sizes/font_size = 10
 selected = 0
 item_count = 4
@@ -720,6 +724,7 @@ popup/item_3/id = 3
 
 [node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("2_ugwst")
 theme_override_font_sizes/font_size = 10
 selected = 1
 item_count = 2
