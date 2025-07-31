@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://31brr7dgsiec"]
+
+[ext_resource type="Script" uid="uid://brln6s8r78wxy" path="res://game/scenes/prototype_world.gd" id="1_d43yr"]
+
+[node name="PrototypeWorld" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_d43yr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 315.0
+offset_bottom = 175.0
+color = Color(0, 0, 0, 1)
