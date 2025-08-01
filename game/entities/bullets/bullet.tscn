@@ -1,21 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkrm6wtepammu"]
+[gd_scene load_steps=8 format=3 uid="uid://bkrm6wtepammu"]
 
 [ext_resource type="Script" uid="uid://103or3gxwf3u" path="res://game/entities/bullets/bullet.gd" id="1_m5vx4"]
+[ext_resource type="Texture2D" uid="uid://d2vaipbwrqvh" path="res://assets/textures/mothball_ball1.png" id="2_t2o6y"]
+
+[sub_resource type="Animation" id="Animation_v46yp"]
+resource_name = "spin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_ka76s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74dq7"]
+_data = {
+&"RESET": SubResource("Animation_ka76s"),
+&"spin": SubResource("Animation_v46yp")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v46yp"]
+resource_local_to_scene = true
 radius = 4.0
 
-[sub_resource type="Gradient" id="Gradient_ka76s"]
-offsets = PackedFloat32Array(0.785714, 1)
-colors = PackedColorArray(0.893876, 0.701282, 1.15514e-06, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_74dq7"]
-gradient = SubResource("Gradient_ka76s")
-width = 8
-height = 8
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2o6y"]
+resource_local_to_scene = true
+radius = 4.0
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 8
@@ -24,9 +56,21 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_m5vx4")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t2o6y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_74dq7")
+}
+autoplay = "spin"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v46yp")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_74dq7")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_t2o6y")
+disabled = true

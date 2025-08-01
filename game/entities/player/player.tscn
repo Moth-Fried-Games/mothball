@@ -1,20 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv7mv73nltqo0"]
+[gd_scene load_steps=9 format=3 uid="uid://bv7mv73nltqo0"]
 
 [ext_resource type="Script" uid="uid://s70fratwfkl2" path="res://game/entities/player/player.gd" id="1_1a4jd"]
-[ext_resource type="Texture2D" uid="uid://4dbqvp107uf4" path="res://game/entities/player/skull-1.png" id="2_gqtae"]
+[ext_resource type="Texture2D" uid="uid://g13vtewwbftp" path="res://assets/textures/mothball_player_30x30.png" id="2_gqtae"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4rrl"]
+atlas = ExtResource("2_gqtae")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjfdk"]
+atlas = ExtResource("2_gqtae")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oic1i"]
+atlas = ExtResource("2_gqtae")
+region = Rect2(0, 30, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0nmi"]
+atlas = ExtResource("2_gqtae")
+region = Rect2(30, 30, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhej3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4rrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjfdk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oic1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0nmi")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqtae"]
-radius = 12.0
 
-[node name="Player1" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 18
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_1a4jd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.035, 0.035)
-texture = ExtResource("2_gqtae")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dhej3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.683575
+offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gqtae")

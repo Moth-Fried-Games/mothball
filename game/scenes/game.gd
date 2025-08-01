@@ -17,6 +17,8 @@ const MOTHBALL_UI_HUD_RED_5 = preload("res://assets/textures/mothball_ui_hud_red
 @onready var score_label_2: Label = $Visuals/ScoreLabel2
 @onready var p_1_ammo_sprite_2d: Sprite2D = $Visuals/UISprite2D/P1AmmoSprite2D
 @onready var p_2_ammo_sprite_2d: Sprite2D = $Visuals/UISprite2D/P2AmmoSprite2D
+@onready var player_1: CharacterBody2D = $Entities/Player1
+@onready var player_2: CharacterBody2D = $Entities/Player2
 
 var p1_ammo: int = 5
 var p2_ammo: int = 5
@@ -32,6 +34,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
+	GameGlobals.game_dictionary["game_scene"] = self
 	game_timer.timeout.connect(_on_game_timer_timeout)
 	game_timer.start()
 
@@ -70,7 +73,12 @@ func player_hit(player_number: int, score: int) -> void:
 				game_over()
 
 
-func update_ammo() -> void:
+func update_p1_ammo() -> void:
+	p1_ammo = 0
+	for bullet in player_1.bullets:
+		if not bullet.active:
+			p1_ammo += 1
+
 	match p1_ammo:
 		0:
 			p_1_ammo_sprite_2d.texture = null
@@ -84,6 +92,13 @@ func update_ammo() -> void:
 			p_1_ammo_sprite_2d.texture = MOTHBALL_UI_HUD_BLUE_4
 		5:
 			p_1_ammo_sprite_2d.texture = MOTHBALL_UI_HUD_BLUE_5
+
+
+func update_p2_ammo() -> void:
+	p2_ammo = 0
+	for bullet in player_2.bullets:
+		if not bullet.active:
+			p2_ammo += 1
 
 	match p2_ammo:
 		0:

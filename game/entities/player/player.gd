@@ -1,18 +1,25 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var max_speed = 80
-@export var acceleration = 500
-@export var friction = 500
+const SPEED: float = 300
+
+@export var max_speed: float = 100
+@export var acceleration: float = 500
+@export var friction: float = 500
 @export var bullets: Array[CharacterBody2D]
-@export_enum("P1", "P2", "CPU") var player = "P1"
+@export_enum("P1", "P2", "CPU") var player: String = "P1"
 
-var motion = Vector2.ZERO
-var last_direction = Vector2.ZERO
+var motion: Vector2 = Vector2.ZERO
+var input_vector: Vector2 = Vector2.ZERO
+var last_direction: Vector2 = Vector2.ZERO
+var starting_position: Vector2 = Vector2.ZERO
+
+var cpu_shoot: bool = false
 
 
 func _ready() -> void:
+	starting_position = global_position
 	match player:
 		"P1":
 			set_collision_mask_value(5, true)
@@ -20,9 +27,21 @@ func _ready() -> void:
 		"P2":
 			set_collision_mask_value(5, false)
 			set_collision_mask_value(6, true)
+			animated_sprite_2d.rotation = Vector2.LEFT.angle()
 		"CPU":
 			set_collision_mask_value(5, false)
 			set_collision_mask_value(6, true)
+			animated_sprite_2d.rotation = Vector2.LEFT.angle()
+
+
+func _process(delta: float) -> void:
+	if input_vector != Vector2.ZERO:
+		if animated_sprite_2d.animation != "move":
+			animated_sprite_2d.play("move")
+		animated_sprite_2d.rotation = input_vector.angle()
+	else:
+		if animated_sprite_2d.animation != "idle":
+			animated_sprite_2d.play("idle")
 
 
 func _physics_process(delta: float) -> void:
@@ -31,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 func movement(delta) -> void:
-	var input_vector = Vector2.ZERO
+	input_vector = Vector2.ZERO
 
 	match player:
 		"P1":
@@ -76,6 +95,8 @@ func shoot():
 			player_shoot = Input.is_action_just_pressed("action_shoot_kb2")
 			if !player_shoot:
 				player_shoot = Input.is_action_just_pressed("action_shoot_joy2")
+		"CPU":
+			player_shoot = cpu_shoot
 
 	if player_shoot:
 		for bullet in bullets:
@@ -84,4 +105,8 @@ func shoot():
 				bullet.velocity = Vector2(bullet.SPEED, 0).rotated(last_direction.angle())
 				bullet.start_velocity = bullet.velocity
 				bullet.active = true
+				if player == "P1":
+					GameGlobals.game_dictionary["game_scene"].update_p1_ammo()
+				else:
+					GameGlobals.game_dictionary["game_scene"].update_p2_ammo()
 				break

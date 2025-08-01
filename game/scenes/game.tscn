@@ -85,7 +85,8 @@ one_shot = true
 
 [node name="StageAnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
 sprite_frames = SubResource("SpriteFrames_bbyh4")
-frame_progress = 0.138615
+autoplay = "default"
+frame_progress = 0.544416
 centered = false
 
 [node name="UISprite2D" type="Sprite2D" parent="Visuals"]
