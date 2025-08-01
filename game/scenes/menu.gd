@@ -112,7 +112,7 @@ func change_to_game() -> void:
 			GameGlobals.audio_manager.fade_audio_out_and_destroy(
 				"music_menu", GameGlobals.game_dictionary["music_menu"], 1
 			)
-		GameUi.ui_transitions.change_scene_with_loading(GameGlobals.lab_scene)
+		GameUi.ui_transitions.change_scene_with_loading(GameGlobals.game_scene)
 
 
 func quit_game() -> void:

@@ -28,7 +28,8 @@ var game_data: GameData = null
 var audio_manager: AudioManager = AudioManager.new()
 
 var game_dictionary: Dictionary = {}
-
+var menu_scene: String = "res://game/scenes/menu.tscn"
+var game_scene: String = "res://game/scenes/game.tscn"
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():

@@ -119,6 +119,7 @@ func power_down():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_1
+			sprite_2d.modulate.a = 0.5
 		1:
 			level = 0
 			speed_modifier = 0
@@ -126,6 +127,7 @@ func power_down():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_1
+			sprite_2d.modulate.a = 0.5
 		2:
 			level = 1
 			speed_modifier = 0.25
@@ -133,6 +135,7 @@ func power_down():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_2
+			sprite_2d.modulate.a = 1
 		3:
 			level = 2
 			speed_modifier = 0.50
@@ -140,6 +143,7 @@ func power_down():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_3
+			sprite_2d.modulate.a = 1
 	await get_tree().create_timer(0.05).timeout
 	ball_impact = false
 	player_impact = false
@@ -154,6 +158,7 @@ func power_up():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_2
+			sprite_2d.modulate.a = 1
 		1:
 			level = 2
 			speed_modifier = 0.50
@@ -161,6 +166,7 @@ func power_up():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_3
+			sprite_2d.modulate.a = 1
 		2:
 			level = 3
 			speed_modifier = 0.75
@@ -168,6 +174,8 @@ func power_up():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_4
+			sprite_2d.modulate.a = 1
+
 
 func spawn_particle():
 	var particle_resource = null
@@ -180,7 +188,7 @@ func spawn_particle():
 			particle_resource = PARTICLE_3.instantiate()
 		3:
 			particle_resource = PARTICLE_4.instantiate()
-	
+
 	particle_resource.global_position = global_position
 	particle_resource.emitting = true
 	get_parent().get_parent().add_child(particle_resource)
