@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://0vrbsdknjnfj"]
+[gd_scene load_steps=22 format=3 uid="uid://ckf1shoupml04"]
 
 [ext_resource type="Script" uid="uid://bbkaga6afrhk4" path="res://game/scenes/game.gd" id="1_vv3et"]
 [ext_resource type="PackedScene" uid="uid://bv7mv73nltqo0" path="res://game/entities/player/player.tscn" id="2_wowgv"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bkrm6wtepammu" path="res://game/entities/bullets/bullet.tscn" id="3_ykdcs"]
 [ext_resource type="Texture2D" uid="uid://kvwmwtqpkymn" path="res://assets/textures/mothball_ui_hud_blue5.png" id="4_4osd1"]
 [ext_resource type="FontFile" uid="uid://dpno5j5764jhf" path="res://assets/fonts/silkscreen/Silkscreen-Regular.ttf" id="4_l4dfk"]
-[ext_resource type="FontFile" uid="uid://b5itwd6v2e2lj" path="res://assets/fonts/silkscreen/Silkscreen-Bold.ttf" id="5_og0sj"]
 [ext_resource type="Texture2D" uid="uid://gqcagbmvisx6" path="res://assets/textures/mothball_ui_hud_red5.png" id="5_ru4j2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gy5jl"]
@@ -50,7 +49,7 @@ animations = [{
 font = ExtResource("4_l4dfk")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ru4j2"]
-font = ExtResource("5_og0sj")
+font = ExtResource("4_l4dfk")
 font_size = 24
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d43yr"]
@@ -90,6 +89,7 @@ frame_progress = 0.544416
 centered = false
 
 [node name="UISprite2D" type="Sprite2D" parent="Visuals"]
+z_index = 1
 position = Vector2(160, 162)
 texture = ExtResource("3_gy5jl")
 
@@ -99,31 +99,31 @@ texture = ExtResource("4_4osd1")
 [node name="P2AmmoSprite2D" type="Sprite2D" parent="Visuals/UISprite2D"]
 texture = ExtResource("5_ru4j2")
 
-[node name="TimerLabel" type="Label" parent="Visuals"]
-offset_left = 146.0
-offset_top = 147.0
-offset_right = 174.0
-offset_bottom = 174.0
+[node name="TimerLabel" type="Label" parent="Visuals/UISprite2D"]
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 15.0
 text = "00"
 label_settings = SubResource("LabelSettings_4osd1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLabel1" type="Label" parent="Visuals"]
-offset_left = 111.0
-offset_top = 144.0
-offset_right = 144.0
-offset_bottom = 177.0
+[node name="ScoreLabel1" type="Label" parent="Visuals/UISprite2D"]
+offset_left = -52.0
+offset_top = -18.0
+offset_right = -13.0
+offset_bottom = 15.0
 text = "0"
 label_settings = SubResource("LabelSettings_ru4j2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLabel2" type="Label" parent="Visuals"]
-offset_left = 176.0
-offset_top = 144.0
-offset_right = 209.0
-offset_bottom = 177.0
+[node name="ScoreLabel2" type="Label" parent="Visuals/UISprite2D"]
+offset_left = 13.0
+offset_top = -18.0
+offset_right = 52.0
+offset_bottom = 15.0
 text = "0"
 label_settings = SubResource("LabelSettings_ru4j2")
 horizontal_alignment = 1

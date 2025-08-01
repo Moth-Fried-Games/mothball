@@ -23,8 +23,8 @@ const MOTHBALL_UI_HUD_RED_5 = preload("res://assets/textures/mothball_ui_hud_red
 var p1_ammo: int = 5
 var p2_ammo: int = 5
 var time_remaining: int = 99
-var p1_score: int = 3
-var p2_score: int = 3
+var p1_score: int = 5
+var p2_score: int = 5
 var game_end: bool = false
 
 
