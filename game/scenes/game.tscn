@@ -101,9 +101,9 @@ texture = ExtResource("5_ru4j2")
 
 [node name="TimerLabel" type="Label" parent="Visuals/UISprite2D"]
 offset_left = -18.0
-offset_top = -18.0
+offset_top = -14.0
 offset_right = 18.0
-offset_bottom = 15.0
+offset_bottom = 14.0
 text = "00"
 label_settings = SubResource("LabelSettings_4osd1")
 horizontal_alignment = 1

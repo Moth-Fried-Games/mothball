@@ -12,9 +12,9 @@ const MOTHBALL_UI_HUD_RED_4 = preload("res://assets/textures/mothball_ui_hud_red
 const MOTHBALL_UI_HUD_RED_5 = preload("res://assets/textures/mothball_ui_hud_red5.png")
 
 @onready var game_timer: Timer = $GameTimer
-@onready var timer_label: Label = $Visuals/TimerLabel
-@onready var score_label_1: Label = $Visuals/ScoreLabel1
-@onready var score_label_2: Label = $Visuals/ScoreLabel2
+@onready var timer_label: Label = $Visuals/UISprite2D/TimerLabel
+@onready var score_label_1: Label = $Visuals/UISprite2D/ScoreLabel1
+@onready var score_label_2: Label = $Visuals/UISprite2D/ScoreLabel2
 @onready var p_1_ammo_sprite_2d: Sprite2D = $Visuals/UISprite2D/P1AmmoSprite2D
 @onready var p_2_ammo_sprite_2d: Sprite2D = $Visuals/UISprite2D/P2AmmoSprite2D
 @onready var player_1: CharacterBody2D = $Entities/Player1
