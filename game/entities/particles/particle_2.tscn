@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dilcc6s188354"]
+
+[ext_resource type="Script" uid="uid://ynre24ujdbxc" path="res://game/entities/particles/particle.gd" id="1_epphi"]
+
+[sub_resource type="Gradient" id="Gradient_v46yp"]
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(0.194349, 0.194349, 0.194349, 1, 0.501407, 0.501406, 0.501406, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ow7m2"]
+gradient = SubResource("Gradient_v46yp")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_epphi"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[node name="Particle2" type="GPUParticles2D"]
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_ow7m2")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_epphi")
+script = ExtResource("1_epphi")

@@ -5,6 +5,11 @@ const MOTHBALL_BALL_2 = preload("res://assets/textures/mothball_ball2.png")
 const MOTHBALL_BALL_3 = preload("res://assets/textures/mothball_ball3.png")
 const MOTHBALL_BALL_4 = preload("res://assets/textures/mothball_ball4.png")
 
+const PARTICLE_1 = preload("res://game/entities/particles/particle_1.tscn")
+const PARTICLE_2 = preload("res://game/entities/particles/particle_2.tscn")
+const PARTICLE_3 = preload("res://game/entities/particles/particle_3.tscn")
+const PARTICLE_4 = preload("res://game/entities/particles/particle_4.tscn")
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
@@ -59,6 +64,7 @@ func _physics_process(delta: float) -> void:
 						GameGlobals.game_dictionary["game_scene"].player_hit(1, level)
 					else:
 						GameGlobals.game_dictionary["game_scene"].player_hit(2, level)
+					spawn_particle()
 					level = 0
 					power_down()
 				else:
@@ -92,6 +98,7 @@ func _process(_delta: float) -> void:
 
 
 func process_balls(value: int) -> void:
+	spawn_particle()
 	for v in range(value):
 		if level > 0:
 			level -= 1
@@ -161,3 +168,19 @@ func power_up():
 			collision_shape_2d.shape.radius = ball_radius
 			area_collision_shape_2d.shape.radius = ball_radius
 			sprite_2d.texture = MOTHBALL_BALL_4
+
+func spawn_particle():
+	var particle_resource = null
+	match level:
+		0:
+			particle_resource = PARTICLE_1.instantiate()
+		1:
+			particle_resource = PARTICLE_2.instantiate()
+		2:
+			particle_resource = PARTICLE_3.instantiate()
+		3:
+			particle_resource = PARTICLE_4.instantiate()
+	
+	particle_resource.global_position = global_position
+	particle_resource.emitting = true
+	get_parent().get_parent().add_child(particle_resource)

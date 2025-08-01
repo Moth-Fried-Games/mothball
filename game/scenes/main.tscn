@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mb7rfkkgarb8"]
 
-[ext_resource type="Script" uid="uid://bobkieouqdchi" path="res://game/scenes/main.gd" id="1_jbjdl"]
-[ext_resource type="PackedScene" uid="uid://ckf1shoupml04" path="res://game/scenes/game.tscn" id="2_jbjdl"]
+[ext_resource type="Script" path="res://game/scenes/prototype_main.gd" id="1_jbjdl"]
+[ext_resource type="PackedScene" uid="uid://0vrbsdknjnfj" path="res://game/scenes/game.tscn" id="2_jbjdl"]
 
 [node name="PrototypeMain" type="CanvasLayer"]
 script = ExtResource("1_jbjdl")
