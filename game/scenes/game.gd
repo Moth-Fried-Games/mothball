@@ -37,6 +37,9 @@ func _ready() -> void:
 	GameGlobals.game_dictionary["game_scene"] = self
 	game_timer.timeout.connect(_on_game_timer_timeout)
 	game_timer.start()
+	timer_label.text = str("%02d" % [time_remaining])
+	score_label_1.text = str(p1_score)
+	score_label_2.text = str(p2_score)
 
 
 func _process(_delta: float) -> void:
@@ -50,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 func _on_game_timer_timeout() -> void:
 	if time_remaining > 0:
 		time_remaining -= 1
+		timer_label.text = str("%02d" % [time_remaining])
 		game_timer.start()
 	if time_remaining == 0:
 		game_over()
@@ -71,6 +75,8 @@ func player_hit(player_number: int, score: int) -> void:
 					p1_score += 1
 			if p2_score == 0:
 				game_over()
+	score_label_1.text = str(p1_score)
+	score_label_2.text = str(p2_score)
 
 
 func update_p1_ammo() -> void:
@@ -123,9 +129,9 @@ func game_over() -> void:
 
 
 func game_results() -> void:
-	if p1_score == 0:
+	if p1_score == 0:  # p2 wins
 		pass
-	if p2_score == 0:
+	if p2_score == 0:  # p1 wins
 		pass
-	if p1_score == p2_score:
+	if p1_score == p2_score:  #draw
 		pass

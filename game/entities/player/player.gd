@@ -21,22 +21,29 @@ var cpu_shoot: bool = false
 
 
 func _ready() -> void:
+	add_to_group("player")
 	starting_position = global_position
 	match player:
 		"P1":
 			set_collision_mask_value(5, true)
 			set_collision_mask_value(6, false)
+			for ball in bullets:
+				ball.player_number = 1
 		"P2":
 			set_collision_mask_value(5, false)
 			set_collision_mask_value(6, true)
 			animated_sprite_2d.rotation = Vector2.LEFT.angle()
+			for ball in bullets:
+				ball.player_number = 2
 		"CPU":
 			set_collision_mask_value(5, false)
 			set_collision_mask_value(6, true)
 			animated_sprite_2d.rotation = Vector2.LEFT.angle()
+			for ball in bullets:
+				ball.player_number = 2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if input_vector != Vector2.ZERO:
 		if animated_sprite_2d.animation != "move":
 			animated_sprite_2d.play("move")
@@ -79,7 +86,7 @@ func movement(delta) -> void:
 	var angle = rad_to_deg(input_vector.angle())
 	angle = snappedf(angle, 45.0)
 	snapped_input_vector = Vector2.from_angle(deg_to_rad(angle))
-	
+
 	if input_vector != Vector2.ZERO:
 		motion = motion.move_toward(snapped_input_vector * max_speed, acceleration * delta)
 		last_direction = snapped_input_vector
