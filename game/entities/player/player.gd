@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player_arrow: Sprite2D = $PlayerArrow
 
 const SPEED: float = 300
 
@@ -12,6 +13,7 @@ const SPEED: float = 300
 
 var motion: Vector2 = Vector2.ZERO
 var input_vector: Vector2 = Vector2.ZERO
+var snapped_input_vector: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 var starting_position: Vector2 = Vector2.ZERO
 
@@ -38,10 +40,13 @@ func _process(delta: float) -> void:
 	if input_vector != Vector2.ZERO:
 		if animated_sprite_2d.animation != "move":
 			animated_sprite_2d.play("move")
-		animated_sprite_2d.rotation = input_vector.angle()
+		animated_sprite_2d.rotation = snapped_input_vector.angle()
+		player_arrow.rotation = animated_sprite_2d.rotation
+		player_arrow.show()
 	else:
 		if animated_sprite_2d.animation != "idle":
 			animated_sprite_2d.play("idle")
+		player_arrow.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -71,10 +76,13 @@ func movement(delta) -> void:
 				)
 
 	input_vector = input_vector.normalized()
-
+	var angle = rad_to_deg(input_vector.angle())
+	angle = snappedf(angle, 45.0)
+	snapped_input_vector = Vector2.from_angle(deg_to_rad(angle))
+	
 	if input_vector != Vector2.ZERO:
-		motion = motion.move_toward(input_vector * max_speed, acceleration * delta)
-		last_direction = input_vector
+		motion = motion.move_toward(snapped_input_vector * max_speed, acceleration * delta)
+		last_direction = snapped_input_vector
 	else:
 		motion = motion.move_toward(Vector2.ZERO, friction * delta)
 

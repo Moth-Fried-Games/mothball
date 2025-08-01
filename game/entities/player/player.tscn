@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv7mv73nltqo0"]
+[gd_scene load_steps=10 format=3 uid="uid://bv7mv73nltqo0"]
 
 [ext_resource type="Script" uid="uid://s70fratwfkl2" path="res://game/entities/player/player.gd" id="1_1a4jd"]
 [ext_resource type="Texture2D" uid="uid://g13vtewwbftp" path="res://assets/textures/mothball_player_30x30.png" id="2_gqtae"]
+[ext_resource type="Texture2D" uid="uid://mtueltst4w28" path="res://assets/textures/mothball_arrow.png" id="3_x4rrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4rrl"]
 atlas = ExtResource("2_gqtae")
@@ -45,6 +46,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqtae"]
+radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 18
@@ -61,3 +63,7 @@ offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gqtae")
+
+[node name="PlayerArrow" type="Sprite2D" parent="."]
+texture = ExtResource("3_x4rrl")
+offset = Vector2(20, 0)
