@@ -788,11 +788,16 @@ theme_override_fonts/bold_font = ExtResource("3_3v152")
 theme_override_font_sizes/normal_font_size = 10
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center][b]Art and Animation[/b]
+text = "[center]
+
+[b]Idea Brainstorming[/b]
+[url=https://myrthemoth.neocities.org/]Myr the Moth[/url], [url=https://explorermoo.com/]Atlas[/url], [url=https://erikmcclure.com/]Erik McClure[/url] and [url=https://cedi-fonei.neocities.org/]cedifonei[/url]
+
+[b]Art and Animation[/b]
 [url=https://explorermoo.com/]Atlas[/url]
 
 [b]Programming[/b]
-ROMUBOY and [url=https://myrthemoth.neocities.org/]Myr the Moth[/url]
+[url=https://romuboy.itch.io/]ROMUBOY[/url] and [url=https://myrthemoth.neocities.org/]Myr the Moth[/url]
 
 [b]Game Design[/b]
 [url=https://myrthemoth.neocities.org/]Myr the Moth[/url] and [url=https://explorermoo.com/]Atlas[/url]
