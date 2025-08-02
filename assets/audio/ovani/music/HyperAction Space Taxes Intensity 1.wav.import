@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bu5musp74lrip"
+path="res://.godot/imported/HyperAction Space Taxes Intensity 1.wav-f215d1c2766c0c4b33ee383d1983bfdf.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/music/HyperAction Space Taxes Intensity 1.wav"
+dest_files=["res://.godot/imported/HyperAction Space Taxes Intensity 1.wav-f215d1c2766c0c4b33ee383d1983bfdf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

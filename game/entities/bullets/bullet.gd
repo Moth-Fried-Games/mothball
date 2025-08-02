@@ -69,6 +69,9 @@ func _physics_process(delta: float) -> void:
 						GameGlobals.game_dictionary["game_scene"].player_hit(1, level)
 					else:
 						GameGlobals.game_dictionary["game_scene"].player_hit(2, level)
+					GameGlobals.audio_manager.create_2d_audio_at_location(
+						"sound_ball_hit", global_position
+					)
 					spawn_particle()
 					level = 0
 					power_down()
@@ -88,6 +91,9 @@ func _physics_process(delta: float) -> void:
 		global_position.x = wrapf(global_position.x, 0 - ball_radius, 320 + ball_radius)
 
 		if last_position_x != global_position.x:
+			GameGlobals.audio_manager.create_2d_audio_at_location(
+				"sound_ball_warp", global_position
+			)
 			power_up()
 			last_position_x = global_position.x
 
@@ -199,4 +205,5 @@ func spawn_particle():
 
 	particle_resource.global_position = global_position
 	particle_resource.emitting = true
+	GameGlobals.audio_manager.create_2d_audio_at_location("sound_ball_poof", global_position)
 	get_parent().get_parent().add_child(particle_resource)

@@ -24,7 +24,7 @@ const MOTHBALL_UI_HUD_RED_5 = preload("res://assets/textures/mothball_ui_hud_red
 
 var p1_ammo: int = 5
 var p2_ammo: int = 5
-var time_remaining: int = 99
+var time_remaining: int = 90
 var p1_score: int = 5
 var p2_score: int = 5
 var game_end: bool = false
@@ -48,6 +48,10 @@ func change_to_menu() -> void:
 		GameGlobals.audio_manager.fade_audio_out_and_destroy(
 			"music_game", GameGlobals.game_dictionary["music_game"], 1
 		)
+	if is_instance_valid(GameGlobals.game_dictionary["music_victory"]):
+		GameGlobals.audio_manager.fade_audio_out_and_destroy(
+			"music_victory", GameGlobals.game_dictionary["music_victory"], 1
+		)
 	GameUi.ui_transitions.change_scene(GameGlobals.menu_scene)
 
 
@@ -60,6 +64,9 @@ func _ready() -> void:
 	timer_label.text = str("%02d" % [time_remaining])
 	score_label_1.text = str(p1_score)
 	score_label_2.text = str(p2_score)
+	GameGlobals.game_dictionary["music_game"] = GameGlobals.audio_manager.create_persistent_audio(
+		"music_game"
+	)
 
 
 func _process(_delta: float) -> void:
@@ -72,6 +79,10 @@ func _process(_delta: float) -> void:
 		if player_1.player_ready and player_2.player_ready:
 			if not animation_player.is_playing() and not game_result:
 				game_results()
+				if is_instance_valid(GameGlobals.game_dictionary["music_game"]):
+					GameGlobals.audio_manager.fade_audio_out_and_destroy(
+						"music_game", GameGlobals.game_dictionary["music_game"], 1
+					)
 				animation_player.play("result")
 
 
@@ -86,6 +97,7 @@ func _on_game_timer_timeout() -> void:
 			timer_label.text = str("%02d" % [time_remaining])
 			game_timer.start()
 		if time_remaining == 0:
+			game_pause = true
 			game_over()
 
 
@@ -94,6 +106,9 @@ func _on_animation_player_animation_finished(anim_name: String) -> void:
 		game_timer.start()
 		game_pause = false
 	if anim_name == "result":
+		GameGlobals.game_dictionary["music_victory"] = (
+			GameGlobals.audio_manager.create_persistent_audio("music_victory")
+		)
 		game_result = true
 
 
