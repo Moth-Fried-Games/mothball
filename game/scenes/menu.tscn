@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://bl2c2irnhyaw6" path="res://game/scenes/menu.gd" id="1_p4cgt"]
 [ext_resource type="FontFile" uid="uid://dpno5j5764jhf" path="res://assets/fonts/silkscreen/Silkscreen-Regular.ttf" id="2_qfcbr"]
 [ext_resource type="Texture2D" uid="uid://c06ydiy4fjkcc" path="res://assets/textures/mothball_keyart.png" id="2_qhl36"]
-[ext_resource type="Theme" uid="uid://y67sepj4ae5d" path="res://game/scenes/optionbuttons.tres" id="2_ugwst"]
 [ext_resource type="FontFile" uid="uid://b5itwd6v2e2lj" path="res://assets/fonts/silkscreen/Silkscreen-Bold.ttf" id="3_3v152"]
 [ext_resource type="Texture2D" uid="uid://lb6swabv80du" path="res://assets/textures/mothball_logo_.png" id="5_fhhxb"]
+[ext_resource type="Texture2D" uid="uid://f8o2aowa6ad6" path="res://assets/textures/mothball_button1.png" id="6_0s7ov"]
+[ext_resource type="Theme" uid="uid://beee8e7yhibxc" path="res://assets/mothball.tres" id="7_0s7ov"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
@@ -73,12 +74,6 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sp3bp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0kgs"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_6potn"]
-font_size = 8
-font_color = Color(0.780392, 0.827451, 0.862745, 1)
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vx1u"]
 
@@ -195,7 +190,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 4
+current_tab = 3
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
@@ -223,9 +218,9 @@ offset_top = -8.5
 offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/default_color = Color(0.611765, 0.164706, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("2_qfcbr")
 theme_override_fonts/bold_font = ExtResource("3_3v152")
 theme_override_font_sizes/bold_font_size = 12
@@ -244,6 +239,15 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="ColorRect" type="ColorRect" parent="Control/TabContainer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11954, 0.130407, 0.206289, 0.52549)
+
 [node name="Panel" type="MarginContainer" parent="Control/TabContainer/Main"]
 layout_mode = 1
 anchors_preset = 5
@@ -261,31 +265,45 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_fhhxb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/TabContainer/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -33.5
-offset_right = 53.5
-offset_bottom = 71.5
+offset_left = -41.5
+offset_top = -28.0
+offset_right = 41.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0s7ov")
+region_rect = Rect2(0, 0, 38, 36)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 5
+theme_override_constants/separation = 9
+alignment = 1
 
-[node name="StartButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Control/TabContainer/Main/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ionrv")
@@ -299,14 +317,13 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_sp3bp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "START"
 
-[node name="HowButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="HowButton" type="Button" parent="Control/TabContainer/Main/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ionrv")
@@ -320,14 +337,13 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_sp3bp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "HOW TO PLAY"
 
-[node name="SettingsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Control/TabContainer/Main/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ionrv")
@@ -341,14 +357,13 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_sp3bp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "SETTINGS"
 
-[node name="CreditsButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="Control/TabContainer/Main/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ionrv")
@@ -362,14 +377,13 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_sp3bp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "CREDITS"
 
-[node name="QuitButton" type="Button" parent="Control/TabContainer/Main/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Control/TabContainer/Main/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ionrv")
@@ -388,56 +402,76 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/TabContainer/HowTo"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -81.5
-offset_right = 150.0
-offset_bottom = 81.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_0s7ov")
+region_rect = Rect2(0, 0, 38, 36)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="Control/TabContainer/HowTo/NinePatchRect/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/bold_font = ExtResource("2_qfcbr")
-theme_override_font_sizes/bold_font_size = 14
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.611765, 0.164706, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/bold_font = ExtResource("3_3v152")
+theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
 text = "[center][b]HOW TO PLAY"
 fit_content = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="Text" type="RichTextLabel" parent="Control/TabContainer/HowTo/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
+theme = ExtResource("7_0s7ov")
+theme_override_colors/default_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_fonts/normal_font = ExtResource("2_qfcbr")
+theme_override_fonts/bold_font = ExtResource("3_3v152")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "[b]Mothball[/b] is a 1v1 sci-fi dodgeball in which players must hit each other with rollie-pollies that only gain mass after looping through portals.
+The first player to score 10 points, or the player with most points at the end of the timer wins!
+[left]
+[b]Controls[/b]
+- Player 1 -
+Movement - [b]WASD / Analog / D-Pad[/b]
+Shoot - [b]Space / A[/b]
 
-[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(300, 120)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 1
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_qfcbr")
-text = "Mothball is a sci-fi dodgeball in which players must hit each other with quantum balls that only gain mass after looping through portals."
-label_settings = SubResource("LabelSettings_6potn")
+- Player 2 -
+Movement - [b]Arrow Keys / Analog / D-Pad[/b]
+Shoot - [b]Right Ctrl / A[/b] 
+
+"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
-[node name="ReturnButton" type="Button" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="Control/TabContainer/HowTo/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 8
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0.611765, 0.164706, 0.439216, 1)
+theme_override_colors/font_color = Color(0.960784, 1, 0.909804, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vx1u")
@@ -454,35 +488,48 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_oaryu")
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0s7ov")
+region_rect = Rect2(0, 0, 38, 36)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.5
+offset_left = -131.5
 offset_top = -84.0
-offset_right = 126.5
+offset_right = 131.5
 offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Settings/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_lerck")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -493,17 +540,17 @@ bbcode_enabled = true
 text = "[center][b]SETTINGS"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -513,15 +560,16 @@ theme_override_font_sizes/font_size = 8
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MasterHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterHSlider" type="HSlider" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = ExtResource("7_0s7ov")
 
-[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -531,7 +579,7 @@ theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
-[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -541,15 +589,16 @@ theme_override_font_sizes/font_size = 8
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="MusicHSlider" type="HSlider" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = ExtResource("7_0s7ov")
 
-[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="MusicLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -559,7 +608,7 @@ theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
-[node name="MusicLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MusicLabel2" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -569,15 +618,16 @@ theme_override_font_sizes/font_size = 8
 text = "Sounds Volume"
 horizontal_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SoundHSlider" type="HSlider" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundHSlider" type="HSlider" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = ExtResource("7_0s7ov")
 
-[node name="SoundLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="SoundLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -587,20 +637,20 @@ theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_qhl36")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 5
 
-[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 size_flags_vertical = 1
@@ -613,7 +663,7 @@ text = "Display"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 size_flags_vertical = 1
@@ -626,7 +676,7 @@ text = "VSync"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 size_flags_vertical = 1
@@ -639,7 +689,7 @@ text = "Frame Cap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 size_flags_vertical = 1
@@ -652,15 +702,15 @@ text = "Show Frames"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 5
 
-[node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="DisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_ugwst")
+theme = ExtResource("7_0s7ov")
 theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 8
 selected = 0
@@ -670,9 +720,9 @@ popup/item_0/id = 0
 popup/item_1/text = "WINDOWED"
 popup/item_1/id = 1
 
-[node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="VSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_ugwst")
+theme = ExtResource("7_0s7ov")
 theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 8
 selected = 0
@@ -686,9 +736,9 @@ popup/item_2/id = 2
 popup/item_3/text = "MAILBOX"
 popup/item_3/id = 3
 
-[node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_ugwst")
+theme = ExtResource("7_0s7ov")
 theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 8
 selected = 0
@@ -702,9 +752,9 @@ popup/item_2/id = 2
 popup/item_3/text = "AUTO"
 popup/item_3/id = 3
 
-[node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="FrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_ugwst")
+theme = ExtResource("7_0s7ov")
 theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 8
 selected = 1
@@ -714,7 +764,7 @@ popup/item_0/id = 0
 popup/item_1/text = "YES"
 popup/item_1/id = 1
 
-[node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="Control/TabContainer/Settings/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -736,6 +786,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gl3mx")
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
