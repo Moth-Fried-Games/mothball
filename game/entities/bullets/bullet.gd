@@ -36,6 +36,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if active:
+		if GameGlobals.game_dictionary["game_scene"].game_pause:
+			spawn_particle()
+			level = 0
+			power_down()
+
 		if collision_shape_2d.disabled:
 			collision_shape_2d.disabled = false
 			area_collision_shape_2d.disabled = false

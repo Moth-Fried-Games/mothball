@@ -19,6 +19,7 @@ const MOTHBALL_UI_HUD_RED_5 = preload("res://assets/textures/mothball_ui_hud_red
 @onready var p_2_ammo_sprite_2d: Sprite2D = $Visuals/UISprite2D/P2AmmoSprite2D
 @onready var player_1: CharacterBody2D = $Entities/Player1
 @onready var player_2: CharacterBody2D = $Entities/Player2
+@onready var start_animation_player: AnimationPlayer = $Visuals/Messages/StartAnimationPlayer
 
 var p1_ammo: int = 5
 var p2_ammo: int = 5
@@ -26,6 +27,7 @@ var time_remaining: int = 99
 var p1_score: int = 5
 var p2_score: int = 5
 var game_end: bool = false
+var game_pause: bool = true
 
 
 func _enter_tree() -> void:
@@ -36,14 +38,18 @@ func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
 	GameGlobals.game_dictionary["game_scene"] = self
 	game_timer.timeout.connect(_on_game_timer_timeout)
-	game_timer.start()
+	start_animation_player.animation_finished.connect(_on_start_animation_player_animation_finished)
 	timer_label.text = str("%02d" % [time_remaining])
 	score_label_1.text = str(p1_score)
 	score_label_2.text = str(p2_score)
 
 
 func _process(_delta: float) -> void:
-	pass
+	if not game_end:
+		if game_pause:
+			if player_1.player_ready and player_2.player_ready:
+				if not start_animation_player.is_playing():
+					start_animation_player.play("start")
 
 
 func _physics_process(_delta: float) -> void:
@@ -51,12 +57,19 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_game_timer_timeout() -> void:
-	if time_remaining > 0:
-		time_remaining -= 1
-		timer_label.text = str("%02d" % [time_remaining])
+	if not game_pause:
+		if time_remaining > 0:
+			time_remaining -= 1
+			timer_label.text = str("%02d" % [time_remaining])
+			game_timer.start()
+		if time_remaining == 0:
+			game_over()
+
+
+func _on_start_animation_player_animation_finished(anim_name: String) -> void:
+	if anim_name == "start":
 		game_timer.start()
-	if time_remaining == 0:
-		game_over()
+		game_pause = false
 
 
 func player_hit(player_number: int, score: int) -> void:
@@ -77,6 +90,8 @@ func player_hit(player_number: int, score: int) -> void:
 				game_over()
 	score_label_1.text = str(p1_score)
 	score_label_2.text = str(p2_score)
+	game_pause = true
+	game_timer.stop()
 
 
 func update_p1_ammo() -> void:
