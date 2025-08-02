@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckf1shoupml04"]
+[gd_scene load_steps=27 format=3 uid="uid://ckf1shoupml04"]
 
 [ext_resource type="Script" uid="uid://bbkaga6afrhk4" path="res://game/scenes/game.gd" id="1_vv3et"]
 [ext_resource type="PackedScene" uid="uid://bv7mv73nltqo0" path="res://game/entities/player/player.tscn" id="2_wowgv"]
@@ -136,10 +136,39 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Winner:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ru4j2"]
+resource_name = "result"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Winner:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ru4j2"]
 _data = {
 &"RESET": SubResource("Animation_4osd1"),
+&"result": SubResource("Animation_ru4j2"),
 &"start": SubResource("Animation_og0sj")
 }
 
@@ -289,7 +318,30 @@ label_settings = SubResource("LabelSettings_og0sj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartAnimationPlayer" type="AnimationPlayer" parent="Visuals/Messages"]
+[node name="Winner" type="Node2D" parent="Visuals/Messages"]
+visible = false
+position = Vector2(160, 69)
+
+[node name="Label" type="Label" parent="Visuals/Messages/Winner"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -15.5
+offset_right = 24.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "P1
+WINS"
+label_settings = SubResource("LabelSettings_og0sj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/Messages"]
 libraries = {
 &"": SubResource("AnimationLibrary_ru4j2")
 }

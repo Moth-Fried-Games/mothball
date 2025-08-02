@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxv6h4fjan723"
+path="res://.godot/imported/Selection Dull.wav-36dabac704a4ed9169bd51e02617429f.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/sounds/Selection Dull.wav"
+dest_files=["res://.godot/imported/Selection Dull.wav-36dabac704a4ed9169bd51e02617429f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

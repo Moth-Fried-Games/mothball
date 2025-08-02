@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 
 func load_audio():
 	for audio_setting: AudioSettings in GameGlobals.game_data.audio_resources:
-		audio_setting_dict[audio_setting.get_basename().get_file()] = audio_setting
+		audio_setting_dict[audio_setting.audio_name] = audio_setting
 
 
 func create_2d_audio_at_location(audio_name: String, location: Vector2) -> AudioStreamPlayer2D:

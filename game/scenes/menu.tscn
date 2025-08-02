@@ -187,7 +187,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 4
+current_tab = 2
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
@@ -370,7 +370,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "QUIT"
 
 [node name="HowTo" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -381,20 +380,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -47.0
-offset_right = 160.0
-offset_bottom = 47.0
+offset_left = -150.0
+offset_top = -82.5
+offset_right = 150.0
+offset_bottom = 82.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
 theme_override_constants/outline_size = 10
@@ -404,27 +398,10 @@ bbcode_enabled = true
 text = "[center][b]HOW TO PLAY"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer"]
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 12
-text = "OBJECTIVE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_qfcbr")
@@ -737,6 +714,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gl3mx")
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -790,7 +768,7 @@ theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
 text = "[center]
 
-[b]Idea Brainstorming[/b]
+[b]Game Concept[/b]
 [url=https://myrthemoth.neocities.org/]Myr the Moth[/url], [url=https://explorermoo.com/]Atlas[/url], [url=https://erikmcclure.com/]Erik McClure[/url] and [url=https://cedi-fonei.neocities.org/]Cedi[/url]
 
 [b]Art and Animation[/b]

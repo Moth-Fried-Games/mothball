@@ -63,7 +63,7 @@ func _ready() -> void:
 	credits_return_button.pressed.connect(main_menu)
 	credits_rich_text_label.meta_clicked.connect(credits_click_link)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GameGlobals.game_dictionary["title_screen"] = true
+	GameGlobals.game_dictionary["menu_screen"] = true
 	GameUi.ui_transitions.toggle_transition(false)
 	GameGlobals.game_dictionary["music_menu"] = GameGlobals.audio_manager.create_persistent_audio(
 		"music_menu"
@@ -107,12 +107,12 @@ func change_to_game() -> void:
 	if input_ready:
 		input_ready = false
 		GameGlobals.audio_manager.create_audio("sound_menu_click")
-		GameGlobals.game_dictionary["title_screen"] = true
+		GameGlobals.game_dictionary["menu_screen"] = false
 		if is_instance_valid(GameGlobals.game_dictionary["music_menu"]):
 			GameGlobals.audio_manager.fade_audio_out_and_destroy(
 				"music_menu", GameGlobals.game_dictionary["music_menu"], 1
 			)
-		GameUi.ui_transitions.change_scene_with_loading(GameGlobals.game_scene)
+		GameUi.ui_transitions.change_scene(GameGlobals.game_scene)
 
 
 func quit_game() -> void:

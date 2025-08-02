@@ -16,6 +16,7 @@ func update_resources() -> void:
 	if DirAccess.dir_exists_absolute(audio_directory):
 		for audio_setting in GameUtils.get_all_files(audio_directory, "tres"):
 			var audio_setting_resource: AudioSettings = load(audio_setting)
+			audio_setting_resource.audio_name = audio_setting.get_basename().get_file()
 			audio_resources.append(audio_setting_resource)
 		print("Updated Audio Resources")
 	else:

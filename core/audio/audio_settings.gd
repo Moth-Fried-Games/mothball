@@ -3,6 +3,7 @@ class_name AudioSettings
 
 enum AudioType { MUSIC, SOUND, UI }
 
+@export_storage var audio_name: String
 @export_range(0, 10) var limit: int = 5
 @export var audio_type: AudioType
 @export var audio_stream: AudioStream

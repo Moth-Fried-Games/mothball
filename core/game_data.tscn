@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvvdnqg5i4m7k"]
+[gd_scene load_steps=4 format=3 uid="uid://cvvdnqg5i4m7k"]
 
 [ext_resource type="Script" uid="uid://8lurt17bw4vg" path="res://core/game_data.gd" id="1_p8hlm"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_s200k"]
+[ext_resource type="Resource" uid="uid://rwg1xke7rbks" path="res://assets/audio/ovani/sounds/sound_menu_click.tres" id="3_hllp7"]
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_p8hlm")
+audio_resources = Array[ExtResource("2_s200k")]([ExtResource("3_hllp7")])
