@@ -3,7 +3,7 @@ extends Node
 class_name GameSettings
 
 @export var display_mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
-@export var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
+@export var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_DISABLED
 @export_enum("Uncapped", "30", "60", "Auto") var frame_rate_cap: int = 3
 @export var show_fps: bool = false
 

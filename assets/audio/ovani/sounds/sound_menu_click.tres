@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://rwg1xke7rbks"]
 
-[ext_resource type="AudioStream" uid="uid://cxv6h4fjan723" path="res://assets/audio/ovani/sounds/Selection Dull.wav" id="1_238rv"]
+[ext_resource type="AudioStream" uid="uid://brhbeglk8pb1h" path="res://assets/audio/ovani/sounds/Harmonic A.wav" id="1_238rv"]
 [ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="1_a00k8"]
 
 [resource]
 script = ExtResource("1_a00k8")
 audio_name = "sound_menu_click"
-limit = 5
+limit = 10
 audio_type = 1
 audio_stream = ExtResource("1_238rv")
-volume = 0.0
+volume = 5.0
 pitch_scale = 1.0
-pitch_randomness = 0.0
+pitch_randomness = 0.2
 max_distance_2d = 2000.0
 unit_size = 10.0
 max_distance_3d = 0.0

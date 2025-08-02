@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ckf1shoupml04"]
+[gd_scene load_steps=28 format=3 uid="uid://ckf1shoupml04"]
 
 [ext_resource type="Script" uid="uid://bbkaga6afrhk4" path="res://game/scenes/game.gd" id="1_vv3et"]
 [ext_resource type="PackedScene" uid="uid://bv7mv73nltqo0" path="res://game/entities/player/player.tscn" id="2_wowgv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kvwmwtqpkymn" path="res://assets/textures/mothball_ui_hud_blue5.png" id="4_4osd1"]
 [ext_resource type="FontFile" uid="uid://dpno5j5764jhf" path="res://assets/fonts/silkscreen/Silkscreen-Regular.ttf" id="4_l4dfk"]
 [ext_resource type="Texture2D" uid="uid://gqcagbmvisx6" path="res://assets/textures/mothball_ui_hud_red5.png" id="5_ru4j2"]
+[ext_resource type="AudioStream" uid="uid://b0roaf3gmlwqh" path="res://assets/audio/ovani/sounds/Count Down.wav" id="7_4osd1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gy5jl"]
 atlas = ExtResource("2_ykdcs")
@@ -97,6 +98,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, false, false, true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CountDown:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_4osd1"]
 length = 0.001
@@ -143,6 +156,18 @@ tracks/3/path = NodePath("Winner:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CountDown:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -346,6 +371,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ru4j2")
 }
 autoplay = "RESET"
+
+[node name="CountDown" type="AudioStreamPlayer" parent="Visuals/Messages"]
+stream = ExtResource("7_4osd1")
+bus = &"Sounds"
 
 [node name="Boundaries" type="Node2D" parent="."]
 

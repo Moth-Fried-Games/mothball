@@ -80,6 +80,9 @@ func _physics_process(delta: float) -> void:
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())
 			start_velocity = start_velocity.bounce(collision.get_normal())
+			GameGlobals.audio_manager.create_2d_audio_at_location(
+				"sound_ball_bounce", global_position
+			)
 
 		last_position_x = global_position.x
 		global_position.x = wrapf(global_position.x, 0 - ball_radius, 320 + ball_radius)

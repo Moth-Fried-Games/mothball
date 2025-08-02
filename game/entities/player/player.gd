@@ -144,6 +144,9 @@ func shoot():
 				bullet.velocity = Vector2(bullet.SPEED, 0).rotated(last_direction.angle())
 				bullet.start_velocity = bullet.velocity
 				bullet.active = true
+				GameGlobals.audio_manager.create_2d_audio_at_location(
+					"sound_ball_throw", global_position
+				)
 				if player == "P1":
 					GameGlobals.game_dictionary["game_scene"].update_p1_ammo()
 				else:

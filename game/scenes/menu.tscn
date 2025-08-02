@@ -1,9 +1,11 @@
-[gd_scene load_steps=57 format=3 uid="uid://b63rylnp372g7"]
+[gd_scene load_steps=60 format=3 uid="uid://b63rylnp372g7"]
 
 [ext_resource type="Script" uid="uid://bl2c2irnhyaw6" path="res://game/scenes/menu.gd" id="1_p4cgt"]
 [ext_resource type="FontFile" uid="uid://dpno5j5764jhf" path="res://assets/fonts/silkscreen/Silkscreen-Regular.ttf" id="2_qfcbr"]
+[ext_resource type="Texture2D" uid="uid://c06ydiy4fjkcc" path="res://assets/textures/mothball_keyart.png" id="2_qhl36"]
 [ext_resource type="Theme" uid="uid://y67sepj4ae5d" path="res://game/scenes/optionbuttons.tres" id="2_ugwst"]
 [ext_resource type="FontFile" uid="uid://b5itwd6v2e2lj" path="res://assets/fonts/silkscreen/Silkscreen-Bold.ttf" id="3_3v152"]
+[ext_resource type="Texture2D" uid="uid://lb6swabv80du" path="res://assets/textures/mothball_logo_.png" id="5_fhhxb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
@@ -73,9 +75,9 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0kgs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6potn"]
-font_size = 10
+font_size = 8
 font_color = Color(0.780392, 0.827451, 0.862745, 1)
-outline_size = 10
+outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vx1u"]
@@ -105,6 +107,11 @@ expand_margin_left = 75.0
 expand_margin_top = 50.0
 expand_margin_right = 75.0
 expand_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qhl36"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+vertical = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apmy3"]
 
@@ -175,6 +182,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_qhl36")
 expand_mode = 1
 stretch_mode = 6
 
@@ -187,7 +195,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 2
+current_tab = 4
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer"]
@@ -238,14 +246,20 @@ metadata/_tab_index = 1
 
 [node name="Panel" type="MarginContainer" parent="Control/TabContainer/Main"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.5
+offset_top = 10.0
+offset_right = 98.5
+offset_bottom = 54.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Logo" type="TextureRect" parent="Control/TabContainer/Main/Panel"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_fhhxb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Main"]
 layout_mode = 1
@@ -254,10 +268,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -52.5
-offset_right = 41.0
-offset_bottom = 52.5
+offset_left = -53.5
+offset_top = -33.5
+offset_right = 53.5
+offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -269,8 +283,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
@@ -290,8 +304,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
@@ -311,8 +325,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
@@ -332,8 +346,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
@@ -353,8 +367,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fhhxb")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0s7ov")
@@ -370,6 +384,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_n0kgs")
 text = "QUIT"
 
 [node name="HowTo" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -381,31 +396,37 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -82.5
+offset_top = -81.5
 offset_right = 150.0
-offset_bottom = 82.5
+offset_bottom = 81.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 5
 
 [node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/bold_font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/bold_font = ExtResource("2_qfcbr")
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[center][b]HOW TO PLAY"
 fit_content = true
 
-[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/HowTo/VBoxContainer"]
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_qfcbr")
-text = "Explanation"
+text = "Mothball is a sci-fi dodgeball in which players must hit each other with quantum balls that only gain mass after looping through portals."
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -416,8 +437,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vx1u")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_q54vn")
@@ -465,8 +486,8 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/bold_font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/bold_font = ExtResource("2_qfcbr")
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[center][b]SETTINGS"
@@ -486,9 +507,9 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Master Volume"
 horizontal_alignment = 1
 
@@ -504,9 +525,9 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
@@ -514,9 +535,9 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Music Volume"
 horizontal_alignment = 1
 
@@ -532,9 +553,9 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
@@ -542,9 +563,9 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Sounds Volume"
 horizontal_alignment = 1
 
@@ -560,9 +581,9 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "100"
 horizontal_alignment = 1
 
@@ -571,6 +592,7 @@ layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qhl36")
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -584,9 +606,9 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Display"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -597,9 +619,9 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "VSync"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -610,9 +632,9 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Frame Cap"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -623,9 +645,9 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Show Frames"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -640,7 +662,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme = ExtResource("2_ugwst")
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 selected = 0
 item_count = 2
 popup/item_0/text = "FULLSCREEN"
@@ -652,7 +674,7 @@ popup/item_1/id = 1
 layout_mode = 2
 theme = ExtResource("2_ugwst")
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 selected = 0
 item_count = 4
 popup/item_0/text = "DISABLED"
@@ -668,7 +690,7 @@ popup/item_3/id = 3
 layout_mode = 2
 theme = ExtResource("2_ugwst")
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 selected = 0
 item_count = 4
 popup/item_0/text = "UNCAPPED"
@@ -684,7 +706,7 @@ popup/item_3/id = 3
 layout_mode = 2
 theme = ExtResource("2_ugwst")
 theme_override_fonts/font = ExtResource("2_qfcbr")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 selected = 1
 item_count = 2
 popup/item_0/text = "NO"
@@ -697,8 +719,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_apmy3")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_jpjgu")
@@ -714,7 +736,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gl3mx")
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -725,13 +746,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -74.5
-offset_right = 160.0
-offset_bottom = 74.5
+offset_left = -150.0
+offset_top = -81.5
+offset_right = 150.0
+offset_bottom = 81.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/TabContainer/Credits/VBoxContainer"]
 layout_mode = 2
@@ -748,8 +768,8 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/bold_font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/bold_font = ExtResource("2_qfcbr")
 theme_override_font_sizes/bold_font_size = 14
 bbcode_enabled = true
 text = "[center][b]CREDITS"
@@ -760,15 +780,13 @@ custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("2_qfcbr")
-theme_override_fonts/bold_font = ExtResource("3_3v152")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_fonts/bold_font = ExtResource("2_qfcbr")
+theme_override_font_sizes/normal_font_size = 8
 theme_override_font_sizes/bold_font_size = 10
 bbcode_enabled = true
-text = "[center]
-
-[b]Game Concept[/b]
+text = "[center][b]Game Concept[/b]
 [url=https://myrthemoth.neocities.org/]Myr the Moth[/url], [url=https://explorermoo.com/]Atlas[/url], [url=https://erikmcclure.com/]Erik McClure[/url] and [url=https://cedi-fonei.neocities.org/]Cedi[/url]
 
 [b]Art and Animation[/b]
@@ -782,6 +800,7 @@ text = "[center]
 
 [b]Audio[/b]
 [url=https://ovanisound.com/]Music and SFX by Ovani Sound[/url]
+[url=https://opengameart.org/content/sound-effects-pack]Sound Effects Pack[/url] by [url=https://opengameart.org/users/owlishmedia]OwlishMedia[/url]
 
 [b]Fonts[/b]
 [url=https://fonts.google.com/?query=Jason+Kottke]Silkscreen by Jason Kottke[/url]
@@ -797,8 +816,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_3v152")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_qfcbr")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jep10")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_2m05y")
