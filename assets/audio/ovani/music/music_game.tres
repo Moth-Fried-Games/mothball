@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://b8qb8br0ywth"]
+
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="1_wl1m5"]
+[ext_resource type="AudioStream" uid="uid://c6a1yosxcbfom" path="res://assets/audio/ovani/music/HyperAction Space Taxes Main.wav" id="1_xbn7s"]
+
+[resource]
+script = ExtResource("1_wl1m5")
+audio_name = "music_game"
+limit = 1
+audio_type = 0
+audio_stream = ExtResource("1_xbn7s")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
+reverb_tail = 3.076
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

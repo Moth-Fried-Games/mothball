@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://h4yja6svu16o"
+path="res://.godot/imported/Sci-Fi Particle Detonator 001.wav-fb1ba1c4b2881b912c5f8607da779e5a.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/sounds/Sci-Fi Particle Detonator 001.wav"
+dest_files=["res://.godot/imported/Sci-Fi Particle Detonator 001.wav-fb1ba1c4b2881b912c5f8607da779e5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,11 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvvdnqg5i4m7k"]
+[gd_scene load_steps=12 format=3 uid="uid://cvvdnqg5i4m7k"]
 
 [ext_resource type="Script" uid="uid://8lurt17bw4vg" path="res://core/game_data.gd" id="1_p8hlm"]
 [ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_s200k"]
+[ext_resource type="Resource" uid="uid://cm1ehjxwvk2f" path="res://assets/audio/ovani/sounds/sound_ball_poof.tres" id="3_1x3ce"]
+[ext_resource type="Resource" uid="uid://b8qb8br0ywth" path="res://assets/audio/ovani/music/music_game.tres" id="3_dkx5u"]
 [ext_resource type="Resource" uid="uid://rwg1xke7rbks" path="res://assets/audio/ovani/sounds/sound_menu_click.tres" id="3_hllp7"]
+[ext_resource type="Resource" uid="uid://0teifnkujvo8" path="res://assets/audio/ovani/sounds/sound_ball_hit.tres" id="3_plx6u"]
 [ext_resource type="Resource" uid="uid://b4gw0wiowc2wi" path="res://assets/audio/ovani/sounds/sound_ball_throw.tres" id="3_u1xrk"]
 [ext_resource type="Resource" uid="uid://b110hqaprdrod" path="res://assets/audio/sounds/sound_ball_bounce.tres" id="4_hllp7"]
+[ext_resource type="Resource" uid="uid://dqgfdyuh8njj1" path="res://assets/audio/ovani/music/music_menu.tres" id="4_rlvm8"]
+[ext_resource type="Resource" uid="uid://dun4djykof7fd" path="res://assets/audio/ovani/music/music_victory.tres" id="5_rlvm8"]
+[ext_resource type="Resource" uid="uid://bcvtv0shaxx7r" path="res://assets/audio/ovani/sounds/sound_ball_warp.tres" id="6_1h416"]
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_p8hlm")
-audio_resources = Array[ExtResource("2_s200k")]([ExtResource("3_u1xrk"), ExtResource("3_hllp7"), ExtResource("4_hllp7")])
+audio_resources = Array[ExtResource("2_s200k")]([ExtResource("3_dkx5u"), ExtResource("4_rlvm8"), ExtResource("5_rlvm8"), ExtResource("3_plx6u"), ExtResource("3_1x3ce"), ExtResource("3_u1xrk"), ExtResource("6_1h416"), ExtResource("3_hllp7"), ExtResource("4_hllp7")])
