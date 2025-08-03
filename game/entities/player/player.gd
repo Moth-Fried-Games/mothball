@@ -10,6 +10,7 @@ const SPEED: float = 150
 @export var friction: float = 500
 @export var bullets: Array[CharacterBody2D]
 @export var cpu_shoot_cooldown: float = 3
+@export var cpu_ball_danger_distance: float = 100
 @export_enum("P1", "P2", "CPU") var player: String = "P1"
 
 var motion: Vector2 = Vector2.ZERO
@@ -181,7 +182,7 @@ func cpu_direction():
 	for bullet in get_tree().get_nodes_in_group("ball"):
 		var relative_pos = bullet.global_position - global_position
 		
-		if relative_pos.length() < 100 and bullet.active:
+		if relative_pos.length() < cpu_ball_danger_distance and bullet.active:
 			danger_dir += bullet.velocity.rotated(PI / 2)
 	
 	return danger_dir
