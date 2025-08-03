@@ -9,6 +9,7 @@ const SPEED: float = 150
 @export var acceleration: float = 500
 @export var friction: float = 500
 @export var bullets: Array[CharacterBody2D]
+@export var cpu_shoot_cooldown: float = 3
 @export_enum("P1", "P2", "CPU") var player: String = "P1"
 
 var motion: Vector2 = Vector2.ZERO
@@ -16,13 +17,13 @@ var input_vector: Vector2 = Vector2.ZERO
 var snapped_input_vector: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 var starting_position: Vector2 = Vector2.ZERO
+var cooldown_timer: float
 
 var player_ready: bool = false
-var cpu_shoot: bool = false
-
 
 func _ready() -> void:
 	add_to_group("player")
+	cooldown_timer = cpu_shoot_cooldown
 	starting_position = global_position
 	match player:
 		"P1":
@@ -64,7 +65,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
-	shoot()
+	shoot(delta)
 
 
 func movement(_delta) -> void:
@@ -88,6 +89,8 @@ func movement(_delta) -> void:
 					input_vector = Input.get_vector(
 						"move_left_joy2", "move_right_joy2", "move_up_joy2", "move_down_joy2"
 					)
+			"CPU":
+				input_vector = cpu_direction()
 	else:
 		if global_position != starting_position:
 			input_vector = global_position.direction_to(starting_position)
@@ -121,7 +124,7 @@ func movement(_delta) -> void:
 	motion = velocity
 
 
-func shoot():
+func shoot(delta):
 	var player_shoot = false
 
 	if not GameGlobals.game_dictionary["game_scene"].game_pause:
@@ -135,7 +138,7 @@ func shoot():
 				if !player_shoot:
 					player_shoot = Input.is_action_just_pressed("action_shoot_joy2")
 			"CPU":
-				player_shoot = cpu_shoot
+				player_shoot = cpu_shoot(delta)
 
 	if player_shoot:
 		for bullet in bullets:
@@ -171,3 +174,21 @@ func is_player_ready() -> void:
 			player_ready = false
 	else:
 		player_ready = false
+
+func cpu_direction():
+	var danger_dir = Vector2.ZERO
+
+	for bullet in get_tree().get_nodes_in_group("ball"):
+		var relative_pos = bullet.global_position - global_position
+		
+		if relative_pos.length() < 100 and bullet.active:
+			danger_dir += bullet.velocity.rotated(PI / 2)
+	
+	return danger_dir
+
+func cpu_shoot(delta):
+	cooldown_timer -= delta
+	if cooldown_timer <= 0:
+		cooldown_timer = cpu_shoot_cooldown
+		return true
+	return false
