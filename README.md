@@ -7,27 +7,28 @@ Ovani Sound provided Audio cannot be included in the repository due to licensing
 
 Builds on Itch.io https://mothfriedgames.itch.io/mothball
 
-##Credits
-###Game Concept
+## Credits
+
+### Game Concept
 - [Myr the Moth](https://myrthemoth.neocities.org/), [Atlas](https://explorermoo.com/), [Erik McClure](https://erikmcclure.com/) and [Cedi](https://cedi-fonei.neocities.org/)
 
-###Art and Animation
+### Art and Animation
 - [Atlas](https://explorermoo.com/)
 
-###Programming
+### Programming
 - [ROMUBOY](https://romuboy.itch.io/) and [Myr the Moth](https://myrthemoth.neocities.org/) 
 
-###Game Design
+### Game Design
 - [Myr the Moth](https://myrthemoth.neocities.org/) and [Atlas](https://explorermoo.com/)
 
-###Audio
+### Audio
 - [Mothball (Game Music) by Erik McClure](https://erikmcclure.com/)
 - [Title Music, Victory Music and Assorted SFX by Ovani Sound](https://ovanisound.com/)
 - [Sound Effects Pack by OwlishMedia](https://opengameart.org/content/sound-effects-pack)
 
-###Fonts
+### Fonts
 - [Silkscreen by Jason Kottke](https://fonts.google.com/?query=Jason+Kottke)
 
-###Resources
+### Resources
 - [AudioManager](https://github.com/Aarimous/AudioManager)
 - [Format on Save](https://github.com/ryan-haskell/gdformat-on-save)
