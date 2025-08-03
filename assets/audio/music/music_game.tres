@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AudioSettings" load_steps=3 format=3 uid="uid://buj8glcn8ocgj"]
+
+[ext_resource type="AudioStream" uid="uid://cldbkwdog2rs8" path="res://assets/audio/music/mothball_clip.wav" id="1_6ylpc"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="1_wl1m5"]
+
+[resource]
+script = ExtResource("1_wl1m5")
+audio_name = "music_game"
+limit = 1
+audio_type = 0
+audio_stream = ExtResource("1_6ylpc")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_distance_2d = 2000.0
+unit_size = 10.0
+max_distance_3d = 0.0
+reverb_tail = 0.0
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

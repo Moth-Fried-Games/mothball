@@ -3,43 +3,31 @@ extends CanvasLayer
 @onready var tab_container: TabContainer = $Control/TabContainer
 
 # Main Menu
-@onready var start_button: Button = $Control/TabContainer/Main/VBoxContainer/StartButton
-@onready var how_button: Button = $Control/TabContainer/Main/VBoxContainer/HowButton
-@onready var settings_button: Button = $Control/TabContainer/Main/VBoxContainer/SettingsButton
-@onready var credits_button: Button = $Control/TabContainer/Main/VBoxContainer/CreditsButton
-@onready var quit_button: Button = $Control/TabContainer/Main/VBoxContainer/QuitButton
+@onready var start_button: Button = %StartButton
+@onready var how_button: Button = %HowButton
+@onready var settings_button: Button = %SettingsButton
+@onready var credits_button: Button = %CreditsButton
+@onready var quit_button: Button = %QuitButton
 
 # How to Play
-@onready var howto_return_button: Button = $Control/TabContainer/HowTo/VBoxContainer/ReturnButton
+@onready var howto_return_button: Button = %HowToReturnButton
 
 # Settings
-@onready
-var settings_return_button: Button = $Control/TabContainer/Settings/VBoxContainer/ReturnButton
-@onready
-var master_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterHSlider
-@onready
-var master_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/MasterLabel
-@onready
-var music_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicHSlider
-@onready
-var music_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/MusicLabel
-@onready
-var sound_h_slider: HSlider = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundHSlider
-@onready
-var sound_label: Label = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/SoundLabel
-@onready
-var display_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DisplayOptionButton
-@onready
-var v_sync_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VSyncOptionButton
-@onready
-var frame_cap_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/FrameCapOptionButton
-@onready
-var frame_label_option_button: OptionButton = $Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/FrameLabelOptionButton
+@onready var settings_return_button: Button = %SettingsReturnButton
+@onready var master_h_slider: HSlider = %MasterHSlider
+@onready var master_label: Label = %MasterLabel
+@onready var music_h_slider: HSlider = %MusicHSlider
+@onready var music_label: Label = %MusicLabel
+@onready var sound_h_slider: HSlider = %SoundHSlider
+@onready var sound_label: Label = %SoundLabel
+@onready var display_option_button: OptionButton = %DisplayOptionButton
+@onready var v_sync_option_button: OptionButton = %VSyncOptionButton
+@onready var frame_cap_option_button: OptionButton = %FrameCapOptionButton
+@onready var frame_label_option_button: OptionButton = %FrameLabelOptionButton
 
 # Credits
-@onready var credits_return_button: Button = $Control/TabContainer/Credits/VBoxContainer/ReturnButton
-@onready
-var credits_rich_text_label: RichTextLabel = $Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer/RichTextLabel
+@onready var credits_return_button: Button = %CreditsReturnButton
+@onready var credits_rich_text_label: RichTextLabel = %CreditsRichTextLabel
 
 var input_ready: bool = false
 
