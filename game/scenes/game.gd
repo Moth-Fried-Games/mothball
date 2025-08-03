@@ -67,6 +67,10 @@ func _ready() -> void:
 	GameGlobals.game_dictionary["music_game"] = GameGlobals.audio_manager.create_persistent_audio(
 		"music_game"
 	)
+	if not GameGlobals.game_dictionary["cpu"]:
+		player_2.player = "P2"
+	else:
+		player_2.player = "CPU"
 
 
 func _process(_delta: float) -> void:

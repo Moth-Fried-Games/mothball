@@ -4,6 +4,7 @@ extends CanvasLayer
 
 # Main Menu
 @onready var start_button: Button = %StartButton
+@onready var start_button_2: Button = %StartButton2
 @onready var how_button: Button = %HowButton
 @onready var settings_button: Button = %SettingsButton
 @onready var credits_button: Button = %CreditsButton
@@ -34,7 +35,8 @@ var input_ready: bool = false
 
 func _ready() -> void:
 	load_settings()
-	start_button.pressed.connect(change_to_game)
+	start_button.pressed.connect(player_versus)
+	start_button_2.pressed.connect(cpu_versus)
 	quit_button.pressed.connect(quit_game)
 	how_button.pressed.connect(howto_menu)
 	settings_button.pressed.connect(settings_menu)
@@ -89,6 +91,16 @@ func credits_click_link(meta: Variant) -> void:
 	if input_ready:
 		GameGlobals.audio_manager.create_audio("sound_menu_click")
 		OS.shell_open(meta)
+
+
+func player_versus() -> void:
+	GameGlobals.game_dictionary["cpu"] = false
+	change_to_game()
+
+
+func cpu_versus() -> void:
+	GameGlobals.game_dictionary["cpu"] = true
+	change_to_game()
 
 
 func change_to_game() -> void:

@@ -37,6 +37,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if active:
 		if GameGlobals.game_dictionary["game_scene"].game_pause:
+			GameGlobals.audio_manager.create_2d_audio_at_location("sound_ball_hit", global_position)
 			spawn_particle()
 			level = 0
 			power_down()
@@ -102,6 +103,9 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		global_position = start_position
+		if level > 0:
+			level = 0
+			power_down()
 		if !collision_shape_2d.disabled:
 			collision_shape_2d.disabled = true
 			area_collision_shape_2d.disabled = true

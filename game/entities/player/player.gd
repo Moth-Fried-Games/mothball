@@ -9,7 +9,7 @@ const SPEED: float = 150
 @export var acceleration: float = 500
 @export var friction: float = 500
 @export var bullets: Array[CharacterBody2D]
-@export var cpu_shoot_cooldown: float = 3
+@export var cpu_shoot_cooldown: float = 2
 @export var cpu_ball_danger_distance: float = 100
 @export_enum("P1", "P2", "CPU") var player: String = "P1"
 
@@ -22,9 +22,10 @@ var cooldown_timer: float
 
 var player_ready: bool = false
 
+
 func _ready() -> void:
 	add_to_group("player")
-	cooldown_timer = cpu_shoot_cooldown
+	cooldown_timer = randf_range(0.5, cpu_shoot_cooldown)
 	starting_position = global_position
 	match player:
 		"P1":
@@ -176,20 +177,22 @@ func is_player_ready() -> void:
 	else:
 		player_ready = false
 
+
 func cpu_direction():
 	var danger_dir = Vector2.ZERO
 
 	for bullet in get_tree().get_nodes_in_group("ball"):
 		var relative_pos = bullet.global_position - global_position
-		
+
 		if relative_pos.length() < cpu_ball_danger_distance and bullet.active:
 			danger_dir += bullet.velocity.rotated(PI / 2)
-	
+
 	return danger_dir
+
 
 func cpu_shoot(delta):
 	cooldown_timer -= delta
 	if cooldown_timer <= 0:
-		cooldown_timer = cpu_shoot_cooldown
+		cooldown_timer = randf_range(0.5, cpu_shoot_cooldown)
 		return true
 	return false
